@@ -1,0 +1,35 @@
+<a class="btn_round" href="<%= new_board_path %>" ><span>新規投稿</span></a>
+
+<table id="manage-tbl">
+  <col width="120"/>
+  <col width="400"/>
+  <col width="70"/>
+  <col width="100"/>
+  <col width="120"/>
+  <thead>
+    <tr>
+      <th>種別</th>
+      <th>題名</th>
+      <th>都道府県</th>
+      <th>市区町村</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @boards.each do |board| %>
+      <tr>
+        <td><%= get_kind_string(board.kind) %></td>
+        <td><%= board.subject %></td>
+        <td><%= board.prefecture %></td>
+        <td><%= board.city %></td>
+        <td>
+          <a class="btn_round" href="<%= board_path(board) %>"><span>表示</span></a>
+          <a class="btn_round" href="<%= board_path(board) %>"  data-confirm="削除しても良いですか?" data-method="delete" rel="nofollow"><span>削除</span></a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

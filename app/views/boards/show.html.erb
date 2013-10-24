@@ -1,0 +1,26 @@
+<table id="room">
+  <tr>
+    <th>種別</th>
+    <td><%= get_kind_string(@board.kind) %></td>
+  </tr>
+  <tr>
+    <th>題名</th>
+    <td><%= @board.subject %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @board.prefecture + @board.city %></td>
+  </tr>
+  <tr>
+    <th>投稿日時</th>
+    <td><%= @board.created_at.strftime("%Y年 %m月 %d日 %H時 %M分") %>></td>
+  </tr>
+  <tr>
+    <th>本文</th>
+    <td><%= @board.body %></td>
+  </tr>
+</table>
+
+<a class="btn_round" href="<%= board_path(@board) %>"  data-confirm="削除しても良いですか?" data-method="delete" rel="nofollow"><span>削除</span></a>
+<a class="btn_round" href="<%= boards_path %>"><span>投稿一覧</span></a>
+

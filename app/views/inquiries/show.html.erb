@@ -1,0 +1,32 @@
+<p><a href="/inquiries/receiveinquiry">受信メッセージ一覧</a> | <a href="/inquiries/sendinquiry">送信メッセージ一覧</a></p>
+
+<table id="room">
+  <tr>
+    <th>
+      <% if @kind == 'sent' then %>
+        送信先
+      <% else %>
+        差出人
+      <% end %>
+    </th>
+    <td>
+      <% if @kind == 'sent' then %>
+        <%= @inquiry.to_user.name %>
+      <% else %>
+        <%= @inquiry.from_user.name %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>題名</th>
+    <td><%= @inquiry.subject %></td>
+  </tr>
+  <tr>
+    <th>送信日時</th>
+    <td><%= @inquiry.created_at.strftime("%Y年 %m月 %d日 %H時 %M分") %></td>
+  </tr>
+  <tr>
+    <th>本文</th>
+    <td><%= @inquiry.body %></td>
+  </tr>
+</table>

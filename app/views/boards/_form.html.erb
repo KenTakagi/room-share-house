@@ -1,0 +1,43 @@
+<%= form_for(@board) do |f| %>
+  <% if @board.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@board.errors.count, "error") %> prohibited this board from being saved:</h2>
+
+      <ul>
+      <% @board.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   <%= f.hidden_field :user_id %>
+  <div class="field">
+    <%= f.label :kind %><br/>
+    <select name="board[kind]">
+    <% board_kind_list.each do |key,value| %>
+      <option value="<%=key%>"><%=value%></option>
+    <% end %>
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label :subject %>/<br>
+    <%= f.text_field :subject %>
+  </div>
+  <div class="field">
+    住所<br/>
+    <select id="geoapi-prefectures" name="board[prefecture]">
+      <option value="">都道府県を選択してください</option>
+    </select>
+    <select id="geoapi-cities" name="board[city]">
+      <option value="">市区町村名を選択してください</option>
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label :body %><br/>
+    <%= f.text_area :body %>
+  </div>
+ <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

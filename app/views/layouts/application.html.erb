@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<title>ルームシェアハウス</title>
+<meta name="title" content="ルームシェアハウス-ルームメイト募集サイト"/>
+<meta name="description" content="ルームシェアハウス 無料ルームシェア・シェアハウス募集サイト" />
+<meta name="keywords" content="ルームシェア, 募集掲示板, シェアリング, ルームメイト, ルームシェアハウス" />
+<meta property="og:title" content="ルームシェアハウス">
+<meta property="og:site_name" content="ルームシェアハウス">
+<meta property="og:description" content="ルームシェア募集サイト">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://www.ri.room-share-house.com/">
+<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+<body>
+<div id="wrapper">
+<div id="add-header">
+  <!-- room-share-house-header -->
+  <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-1259581874899276"
+         data-ad-slot="3995336457"></ins>
+  <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+<div id="header">
+<!-- 見出し -->
+  <h1>ルームシェアハウス</h1>
+  <div id="welcome">
+  <% if current_user  %>
+    ようこそ <%= link_to current_user.name , "/users/edit" %> さん
+    | <%= link_to "ログアウト", "/signout" %>
+  <% else %>
+    <a class="btn-auth btn-facebook" href="/auth/facebook">
+    <b>facebook</b>でログイン</a>
+    <a class="btn-auth btn-twitter" href="/auth/twitter">
+    <b>twitter</b>でログイン</a>
+    <a class="btn-auth btn-google" href="/auth/google">
+    <b>google</b>でログイン</a>
+    <a class="btn-auth btn-yahoo" href="/auth/yahoojp">
+    <b>yahoo</b>でログイン</a>
+    <span style="vertical-align:-10px">
+    <a class="btn-mixi" href="/auth/mixi"><%= image_tag asset_path 'mixi_login_btn002.png' %></a>
+    </span>
+  <% end %>
+  </div>
+  <!-- タイトル -->
+  <!-- p class="logo"><a href="index.html">*** 会社名｜店舗名｜タイトル ***</a></p-->
+  <!-- 概要 -->
+  <!-- p class="description">*** 概要 ***</p -->
+</div><!-- / header end -->
+<div id="globalnavi">
+  <!-- グローバルナビゲーション -->
+  <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/rents">部屋を探す</a></li>
+      <li><a href="/boards/list/0">掲示板を見る</a></li>
+  </ul>
+</div><!-- / globalnavi end -->
+<div id="container">
+  <div id="contents">
+    <!-- パン屑リスト -->
+    <p class="topic-path"><a href="/">Home</a> &gt; <%= topic %></p>
+    <% if notice %>
+      <p><%= notice %></p>
+    <% end %>
+    <!-- コンテンツ ここから -->
+<%= yield %>
+<div id="add-foote">
+<!-- room-share-house-bottom -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-1259581874899276"
+     data-ad-slot="1960200051"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<!-- コンテンツ ここまで -->
+</div><!-- / contents end -->
+</div><!-- / container end -->
+<!-- サイドバー ここから -->
+<div id="sidebar">
+<p class="sidetitle">会員機能</p>
+<ul class="localnavi">
+  <li><a href="/">Home</a></li>
+  <% if current_user  %>
+    <li><a href="/users/edit">会員情報</a></li>
+    <li><a href="/houses">施設・部屋登録</a></li>
+    <li><a href="/boards">投稿管理</a></li>
+    <li><a href="/inquiries/receiveinquiry">メッセージ管理</a></li>
+  <% else %>
+    <li><a>*会員情報*****</a></li>
+    <li><a>*施設・部屋登録*</a></li>
+    <li><a>*投稿管理*****</a></li>
+    <li><a>*メッセージ管理*</a></li>
+  <% end%>
+</ul>
+<p class="sidetitle">いろいろ</p>
+<ul class="localnavi">
+  <li><a href="http://www.room-share-house.com/" target="_blank">近くの自転車屋さん</a></li>
+</ul>
+<!-- room-share-house-side -->
+<ins class="adsbygoogle"
+       style="display:inline-block;width:160px;height:600px"
+       data-ad-client="ca-pub-1259581874899276"
+       data-ad-slot="9483466857"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!-- サイドバー ここまで -->
+</div><!-- / sidebar end -->
+<div id="footer">
+  <!-- コピーライト -->
+  <p>Copyright &copy; umekichi. All Rights Reserved.</p>
+  <p id="cds">CSS Template <a href="http://www.css-designsample.com/">CSSデザインサンプル</a></p>
+</div><!-- / footer end -->
+</div><!-- / wrapper end -->
+</body>
+</html>

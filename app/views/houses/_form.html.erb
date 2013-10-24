@@ -1,0 +1,101 @@
+<%= form_for(@house) do |f| %>
+  <% if @house.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@house.errors.count, "") %>個のエラーがありました。</h2>
+
+      <ul>
+      <% @house.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <label>住所</label><br/>
+  <select id="geoapi-prefectures" name="house[prefecture]">
+    <option value="">都道府県を選択してください</option>
+  </select>
+    <%= f.hidden_field :prefecture %>
+  <select id="geoapi-cities" name="house[city]">
+    <option value="">市区町村名を選択してください</option>
+  </select>
+    <%= f.hidden_field :city %>
+  <select id="geoapi-towns" name="house[town]">
+    <option value="">町域を選択してください</option>
+  </select>
+    <%= f.hidden_field :town %>
+   <div class="field">
+  最寄駅<br/>
+  <% if @station.nil? %>
+  <select id="rail_company" name="rail_company">
+    <option>鉄道会社を選んでください</option>
+    <% @company.each do|c| %>
+      <option value="<%=c.id%>"><%= c.name %></option>
+    <% end %>
+  </select>
+  <select id="line" name="line">
+  </select>
+  <select id="station" name="house[near_station_cd]">
+  </select>
+  <% else %>
+  <select id="rail_company" name="rail_company">
+    <option>選びなおす</option>
+    <% @company.each do|c| %>
+      <option value="<%=c.id%>"><%= c.name %></option>
+    <% end %>
+  </select>
+  <select id="line" name="line">
+  </select>
+  <select id="station" name="house[near_station_cd]">
+    <option value="<%= @station.id%>"><%=@station.name%></option>
+  </select>
+  <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :from_station %><br/>
+    <%= f.number_field :from_station %>分
+  </div>
+
+ </div>
+  <div class="field">
+    <%= f.label :capacity %><br/>
+    <%= f.number_field :capacity %>名
+  </div>
+  <div class="field">
+    <%= f.label :kind %><br/>
+    <label><%= f.radio_button :kind,"1" %>一戸建て</label>
+    <label><%= f.radio_button :kind,"2" %>マンション</label>
+    <label><%= f.radio_button :kind,"3" %>アパート</label>
+    <label><%= f.radio_button :kind,"4" %>シェアハウス</label>
+  </div>
+  <div class="field">
+    <%= f.label :facility %><br/>
+  <% @facilities.each do |key,value| %>
+    <span style="white-space:nowrap"><input type="checkbox" name="facilities[]" value="<%=key%>" <%=facility_check(@selected_facilitiec,key)%>/> <%=value%></span>
+  <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br/>
+    <%= f.text_area :note %>
+  </div>
+  <div class="field">
+    <%= f.label :photo1 %><br/>
+    <%= image_tag @house.photo1.url(:thumb) %>
+    <%= f.file_field :photo1 %>
+  </div>
+  <div class="field">
+    <%= f.label :photo2 %><br/>
+    <%= image_tag @house.photo2.url(:thumb) %>
+    <%= f.file_field :photo2 %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

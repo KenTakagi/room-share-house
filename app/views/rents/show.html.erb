@@ -1,0 +1,92 @@
+<table>
+  <tr><td>
+  <table id="room">
+    <col width="160"/>
+    <col width="400"/>
+  <tr>
+    <th>オーナー</th>
+    <td><%= @owner.name %> <span style="float:right;"><a class="btn_round" href="/inquiries/<%=@room.house.owner_id%>/new">問い合わせはこちら<a></span></td>
+  </tr>
+  <tr>
+    <th>建物・部屋名</th>
+    <td><%= @room.house.name %>・<%= @room.name %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @room.house.prefecture %><%= @room.house.city %><%= @room.house.town %></td>
+  </tr>
+  <tr>
+    <th>部屋賃料</th>
+    <td><%= number_with_delimiter(@room.rent) %></td>
+  </tr>
+  <tr>
+    <th>その他月額費用</th>
+    <td><%= number_with_delimiter(@room.expense) %></td>
+  </tr>
+  <tr>
+    <th>デポジット・保証金</th>
+    <td><%= number_with_delimiter(@room.deposit) %></td>
+  </tr>
+  <tr>
+    <th>建物定員</th>
+    <td><%= @room.house.capacity %>名</td>
+  </tr>
+  <tr>
+    <th>建物種別</th>
+    <td><%= get_house_kind_string(@room.house.kind) %></td>
+  </tr>
+  <tr>
+    <th>建物設備</th>
+    <td><%= facility_display(@house_facilities,@selected_house_facilities) %></td>
+  </tr>
+  <tr>
+    <th>最寄り駅</th>
+    <td><%= @station.name %> 徒歩<%= @room.house.from_station %>分</td>
+  </tr>
+  <tr>
+    <th>建物説明</th>
+    <td><%= simple_format(@room.house.note) %></td>
+  </tr>
+  <tr>
+    <th>部屋広さ</th>
+    <td><%= @room.largeness %></td>
+  </tr>
+  <tr>
+    <th>部屋種別</th>
+    <td><%= get_room_kind_string(@room.kind) %></td>
+  </tr>
+  <tr>
+    <th>性別制限</th>
+    <td><%= get_room_sex_string(@room.sex) %></td>
+  </tr>
+  <tr>
+    <th>部屋設備</th>
+    <td><%= facility_display(@room_facilities,@selected_room_facilities) %></td>
+  </tr>
+  <tr>
+    <th>部屋説明</th>
+    <td><%= simple_format(@room.note) %></td>
+  </tr>
+  <tr>
+    <th>情報更新日</th>
+    <td><%= @room.updated_at.strftime("%Y年 %m月 %d日 %H時 %M分") %></td>
+  </tr>
+</table>
+</td>
+<td id="photo">
+<table>
+  <tr>
+    <td>
+      <%= image_tag @room.photo1.url(:medium) ,:alt => "部屋画像1",:id => "main_p" %>
+    </td>
+  </tr>
+  <tr>
+    <td id="thumb_p">
+      <%= image_tag @room.photo2.url(:medium) ,:alt => "部屋画像2", :class => "thumb"%>
+      <%= image_tag @room.house.photo1.url(:medium) ,:alt => "施設画像1", :class => "thumb"%>
+      <%= image_tag @room.house.photo2.url(:medium) ,:alt => "施設画像2", :class => "thumb"%>
+    </td>
+  </tr>
+</table>
+</td></tr>
+</table>

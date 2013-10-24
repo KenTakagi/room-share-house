@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rr_id: 1
+  name: MyString
+  url: MyString
+  type: 1
+  status: 1
+  sort: 1
+
+two:
+  rr_id: 1
+  name: MyString
+  url: MyString
+  type: 1
+  status: 1
+  sort: 1

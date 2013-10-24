@@ -1,0 +1,38 @@
+<p>
+<% if @houses.nil? then %>
+  まずは家・施設を登録しましょう！
+<% else %>
+  部屋の管理から部屋・家賃を登録しましょう！
+<% end %>
+</p>
+
+<a class="btn_round" href="<%= new_house_path %>" ><span>新規で家・施設を登録</span></a>
+<table id="manage-tbl">
+  <col width="120"/>
+  <col width="300"/>
+  <col width="40"/>
+  <col width="220"/>
+  <thead>
+    <tr>
+      <th>家・施設名</th>
+      <th>住所</th>
+      <th>定員</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @houses.each do |house| %>
+      <tr>
+        <td><%= house.name %></td>
+        <td><%= house.prefecture %><%= house.city %><%= house.town %></td>
+        <td><%= house.capacity %></td>
+        <td>
+          <a class="btn_round" href="<%= edit_house_path(house) %>"><span>編集</span></a>
+          <a class="btn_round" href="<%= house_path(house) %>"><span>表示</span></a>
+          <a class="btn_round" href="/rooms/<%= house.id %>/index"><span>部屋の管理</span></a>
+        <%#= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

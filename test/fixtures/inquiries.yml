@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  to_userid: 1
+  from_userid: 1
+  subject: MyString
+  body: MyText
+  sent_time: 2013-10-21 14:23:22
+  deleted_time_by_sender: 2013-10-21 14:23:22
+  deleted_time_by_recipient: 2013-10-21 14:23:22
+
+two:
+  to_userid: 1
+  from_userid: 1
+  subject: MyString
+  body: MyText
+  sent_time: 2013-10-21 14:23:22
+  deleted_time_by_sender: 2013-10-21 14:23:22
+  deleted_time_by_recipient: 2013-10-21 14:23:22

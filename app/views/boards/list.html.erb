@@ -1,0 +1,48 @@
+<a class="btn_round" href="<%= new_board_path %>" ><span>新規投稿</span></a>
+<div>
+<% if params[:kind].to_i == 0 then %>
+  全て
+<% else %>
+  <a href="/boards/list/0">全て</a>
+<% end %>
+<% board_kind_list.each do |key, value| %>
+|
+  <% if params[:kind].to_i == key then %>
+    <%= value %>
+  <% else %>
+    <a href="/boards/list/<%= key %>"><%= value %></a>
+  <% end %>
+<% end %>
+</div>
+<span class="pager"><%= paginate(@boards) %>&nbsp;</span>
+<span class="pager lefty"><%= page_entries_info(@boards) %></span>
+<% @boards.each do |board| %>
+<table class="board">
+  <col width="150"/>
+  <col width="150"/>
+  <col width="100"/>
+  <col width="250"/>
+  <tbody>
+  <tr>
+    <td><%= get_kind_string(board.kind) %></td>
+    <td><%= board.prefecture + board.city%></td>
+    <th>投稿日時</th>
+    <td><%= board.created_at.strftime("%Y年%m月%d日%H時%M分")  %></td>
+  </tr>
+  <tr>
+    <td colspan="2"><%= board.subject%></td>
+    <th>投稿者</th>
+    <td><%= board.user.name%>
+    <a class="btn_round" href="/inquiries/<%=board.user.id%>/new"><span>問い合わせる</span></a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="4"><%= simple_format(board.body)%></td>
+  </tr>
+  </tbody>
+</table>
+<% end %>
+
+<span class="pager"><%= paginate(@boards) %>&nbsp;</span>
+<span class="pager lefty"><%= page_entries_info(@boards) %></span>
+

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  house_id: 1
+  name: MyString
+  largeness: MyString
+  kind: 1
+  facilities: 1
+  sex: 1
+  rent: 1
+  expense: 1
+  note: MyText
+  enable: false
+  nationality: 1
+
+two:
+  house_id: 1
+  name: MyString
+  largeness: MyString
+  kind: 1
+  facilities: 1
+  sex: 1
+  rent: 1
+  expense: 1
+  note: MyText
+  enable: false
+  nationality: 1

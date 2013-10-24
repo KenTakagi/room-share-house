@@ -1,0 +1,21 @@
+<span class="pager"><%= paginate(@rooms) %>&nbsp;</span>
+<span class="pager lefty"><%= page_entries_info(@rooms) %></span>
+<ul class="boxline">
+<% @rooms.each do |room| %>
+<a href="/rents/<%=room.id%>">
+<li>
+<span><%= room.house.name %></span>
+<span><%= room.name %></span>
+<span><%= room.house.prefecture %><%=room.house.city %></span>
+<span>広さ <%= room.largeness %></span>
+<span><%= get_room_kind_string(room.kind) %></span>
+<span><%= get_room_nationality_string(room.nationality) %></span>
+<span>賃料 <%= number_with_delimiter(room.rent) %></span>
+<span>諸費用 <%= number_with_delimiter(room.expense) %></span>
+<%= image_tag room.photo1.url(:thumb) %>
+</a>
+</li>
+<% end %>
+</ul> 
+<span class="pager"><%= paginate(@rooms) %>&nbsp;</span>
+<span class="pager lefty"><%= page_entries_info(@rooms) %></span>

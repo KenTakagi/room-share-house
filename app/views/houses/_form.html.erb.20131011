@@ -1,0 +1,77 @@
+<%= form_for(@house) do |f| %>
+  <% if @house.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@house.errors.count, "") %>個のエラーがありました。</h2>
+
+      <ul>
+      <% @house.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :zipcode %><br>
+    <%= f.text_field :zipcode %>
+  </div>
+  <div class="field">
+    <%= f.label :prefecture_code %><br>
+    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, :prompt => "選択してください"%>
+  </div>
+  <select id="geoapi-prefectures" name="prefecture">
+    <option value="">都道府県を選択してください</option>
+  </select>
+  <select id="geoapi-cities" name="city">
+    <option value="">市区町村名を選択してください</option>
+  </select>
+  <select id="geoapi-towns" name="town">
+    <option value="">町域を選択してください</option>
+  </select>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :telphone %><br>
+    <%= f.text_field :telphone %>
+  </div>
+  <div class="field">
+    <%= f.label :capacity %><br>
+    <%= f.number_field :capacity %>
+  </div>
+  <div class="field">
+    <%= f.label :is_pet %><br>
+    <label><%= f.radio_button :is_pet,"1" %>可</label>
+    <label><%= f.radio_button :is_pet,"0" %>不可</label>
+    <%#= f.check_box :is_pet %>
+    <%# f.number_field :is_pet %>
+  </div>
+  <div class="field">
+    <%= f.label :bicycle_space %><br>
+    <%= f.number_field :bicycle_space %>
+  </div>
+  <div class="field">
+    <%= f.label :bike_space %><br>
+    <%= f.number_field :bike_space %>
+  </div>
+  <div class="field">
+    <%= f.label :car_space %><br>
+    <%= f.number_field :car_space %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="field">
+    <%= f.label :photo1 %><br>
+    <%= f.file_field :photo1 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

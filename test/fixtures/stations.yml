@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rail_campany_cd: 
+  line_cd: 1
+  cd: 1
+  line_sort: 1
+  station_g_cd: 1
+  station_type: 
+  name: MyString
+  pref_cd: 
+  lon: 
+  lat: 
+  display_flg: 
+
+two:
+  rail_campany_cd: 
+  line_cd: 1
+  cd: 1
+  line_sort: 1
+  station_g_cd: 1
+  station_type: 
+  name: MyString
+  pref_cd: 
+  lon: 
+  lat: 
+  display_flg: 

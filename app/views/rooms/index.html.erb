@@ -1,0 +1,54 @@
+<h2><%= @house.name %>の部屋管理</h2>
+<p>
+<% if @rooms.nil? || @rooms.size == 0 then %>
+  部屋・家賃を登録すれば物件が公開されます
+<% else %>
+<% end %>
+</p>
+<a class="btn_round" href="/rooms/<%= params[:house_id]%>/new" ><span>新規に部屋・家賃を登録</span></a>
+<a class="btn_round" href="/houses" ><span>施設・家一覧</span></a>
+<table id="manage-tbl">
+  <col width="100"/>
+  <col width="50"/>
+  <col width="80"/>
+  <col width="60"/>
+  <col width="60"/>
+  <col width="60"/>
+  <col width="60"/>
+  <col width="70"/>
+  <col width="50"/>
+  <col width="110"/>
+  <thead>
+    <tr>
+      <th>部屋名</th>
+      <th>広さ</th>
+      <th>タイプ</th>
+      <th>性別制限</th>
+      <th>家賃</th>
+      <th>その他費用</th>
+      <th>デポジット</th>
+      <th>国籍制限</th>
+      <th>募集中か</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.name %></td>
+        <td><%= room.largeness %></td>
+        <td><%= get_room_kind_string(room.kind) %></td>
+        <td><%= get_room_sex_string(room.sex) %></td>
+        <td><%= number_with_delimiter(room.rent) %></td>
+        <td><%= number_with_delimiter(room.expense) %></td>
+        <td><%= number_with_delimiter(room.deposit) %></td>
+        <td><%= get_room_nationality_string(room.nationality) %></td>
+        <td><%= get_room_enable_string(room.enable) %></td>
+        <td><a class="btn_round" href="<%= edit_room_path(room) %>"><span>編集</span></a>
+        <a class="btn_round" href="<%= room_path(room) %>"><span>表示</span></a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

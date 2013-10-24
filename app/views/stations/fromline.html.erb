@@ -1,0 +1,49 @@
+<h1>Listing stations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Line cd</th>
+      <th>Line sort</th>
+      <th>Station group id </th>
+      <th>zipcode</th>
+      <th>Pref cd</th>
+      <th>address</th>
+      <th>Lon</th>
+      <th>Lat</th>
+      <th>Display flg</th>
+      <th></th>
+      <% if can? :update, Station %>
+      <th></th>
+      <th></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stations.each do |station| %>
+      <tr>
+        <td><%= station.name %></td>
+        <td><%= station.line_id %></td>
+        <td><%= station.sort %></td>
+        <td><%= station.group_id %></td>
+        <td><%= station.zipcode %></td>
+        <td><%= station.pref_cd %></td>
+        <td><%= station.address %></td>
+        <td><%= station.lon %></td>
+        <td><%= station.lat %></td>
+        <td><%= station.display_flg %></td>
+        <td><%= link_to 'Show', station %></td>
+      <% if can? :update, Station %>
+        <td><%= link_to 'Edit', edit_station_path(station) %></td>
+        <td><%= link_to 'Destroy', station, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Station', new_station_path %>

@@ -1,0 +1,82 @@
+<%= form_for(@room) do |f| %>
+  <% if @room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@room.errors.count, "error") %> prohibited this room from being saved:</h2>
+
+      <ul>
+      <% @room.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :house_id %>
+  <div class="field">
+    <%= f.label :name %>10文字以内<br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :rent %><br>
+    <%= f.number_field :rent %>
+  </div>
+  <div class="field">
+    <%= f.label :expense %><br>
+    <%= f.number_field :expense %>
+  </div>
+  <div class="field">
+    <%= f.label :deposit %><br>
+    <%= f.number_field :deposit %>
+  </div>
+  <div class="field">
+    <%= f.label :largeness %>m2,畳等単位も入れて下さい<br>
+    <%= f.text_field :largeness %>
+  </div>
+  <div class="field">
+    <%= f.label :kind %><br>
+    <label><%= f.radio_button :kind,"1" %>1人個室</label>
+    <label><%= f.radio_button :kind,"2" %>二人ドミトリー</label>
+    <label><%= f.radio_button :kind,"3" %>その他</label>
+  </div>
+  <div class="field">
+    <%= f.label :sex %><br>
+    <label><%= f.radio_button :sex,"1" %>男性のみ</label>
+    <label><%= f.radio_button :sex,"2" %>女性のみ</label>
+    <label><%= f.radio_button :sex,"3" %>どちらでも</label>
+  </div>
+  <div class="field">
+    <%= f.label :facilities %><br>
+    <% @facilities.each do |key,value| %>
+      <span style="white-space:nowrap">
+      <input type="checkbox" name="facilities[]" value="<%=key%>" <%=facility_check(@selected_facilitiec,key)%>/> <%=value%>
+      </span>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :nationality %><br>
+    <label><%= f.radio_button :nationality,"1" %>日本人のみ</label>
+    <label><%= f.radio_button :nationality,"2" %>外国人OK</label>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="field">
+    <%= f.label :photo1 %>※検索一覧にはこの写真が表示されます<br>
+    <%= f.file_field :photo1 %>
+    <%= image_tag @room.photo1.url(:thumb) %>
+  </div>
+  <div class="field">
+    <%= f.label :photo2 %><br>
+    <%= f.file_field :photo2 %>
+    <%= image_tag @room.photo2.url(:thumb) %>
+  </div>
+  <div class="field">
+    <%= f.label :enable %><br>
+    <label><%= f.radio_button :enable,"true" %>募集中</label>
+    <label><%= f.radio_button :enable,"false" %>停止中</label>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

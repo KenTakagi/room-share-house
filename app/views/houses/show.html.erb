@@ -1,0 +1,41 @@
+<table id="room">
+  <tr>
+    <th>名前</th>
+    <td><%= @house.name %></td>
+  </th>
+  <tr>
+    <th>住所</th>
+    <td><%= @house.prefecture <<@house.city << @house.town%></td>
+  </th>
+  <tr>
+    <th>最寄り駅</th>
+    <td><%= @station.name %> 徒歩<%= @house.from_station %>分</td>
+  </th>
+  <tr>
+    <th>居住定員</th>
+    <td><%= @house.capacity %>名</td>
+  </th>
+  <tr>
+    <th>建物種別</th>
+    <td><%= get_house_kind_string(@house.kind) %></td>
+  </th>
+  <tr>
+    <th>設備</th>
+    <td><%= facility_display(@facilities,@selected_facilities) %></td>
+  </th>
+  <tr>
+    <th>説明文</th>
+    <td><%= @house.note %></td>
+  </th>
+  <tr>
+    <th>写真1</th>
+    <td><%= image_tag @house.photo1.url(:medium) %></td>
+  </th>
+  <tr>
+    <th>写真2</th>
+    <td><%= image_tag @house.photo2.url(:medium) %></td>
+  </th>
+</table>
+<a class="btn_round" href="<%= edit_house_path(@house) %>" ><span>編集</span></a>
+<a class="btn_round" href="<%= houses_path %>" ><span>施設・家一覧</span></a>
+

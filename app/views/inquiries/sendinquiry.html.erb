@@ -1,0 +1,31 @@
+<p><a href="receiveinquiry">受信メッセージ一覧</a> | 送信メッセージ一覧</p>
+<table id="inquiry-tbl">
+  <col width="20"/>
+  <col width="150"/>
+  <col width="300"/>
+  <col width="200"/>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>宛先</th>
+      <th>題名</th>
+      <th>送信日</th>
+    </tr>
+  </thead>
+
+  <form action="/inquiries/deleteInquiries" method="post">
+    <input type="hidden" name="kind" value="sent"/>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="submit" name="delete" value="チェックしたメッセージを削除"/>
+  <tbody>
+    <% @inquiries.each do |inquiry| %>
+      <tr data-href="<%= "/inquiries/show/"+inquiry.id.to_s %>">
+        <td><input type="checkbox" name="checked_ids[]" value="<%= inquiry.id %>"/>
+        <td><%= inquiry.to_user.name %></td>
+        <td><%= inquiry.subject %></td>
+        <td><%= inquiry.created_at.strftime('%Y年%m月%d日%H時%M分') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</form>
+</table>

@@ -1,0 +1,48 @@
+<table id="room">
+  <tr>
+    <th>名前</th>
+    <td><%= @room.name %></td>
+  </tr>
+  <tr>
+    <th>家賃</th>
+    <td><%= number_with_delimiter(@room.rent) %></td>
+  </tr>
+  <tr>
+    <th>その他月費用</th>
+    <td><%= number_with_delimiter(@room.expense) %></td>
+  </tr>
+  <tr>
+    <th>デポジット・保証金</th>
+    <td><%= number_with_delimiter(@room.deposit) %></td>
+  </tr>
+  <tr>
+    <th>広さ</th>
+    <td><%= @room.largeness %></td>
+  </tr>
+  <tr>
+    <th>タイプ</th>
+    <td><%= get_room_kind_string(@room.kind) %></td>
+  </tr>
+  <tr>
+    <th>性別制限</th>
+    <td><%= get_room_sex_string(@room.sex) %></td>
+  </tr>
+  <tr>
+    <th>設備</th>
+    <td><%= facility_display(@facilities,@selected_facilities) %></td>
+  </tr>
+  <tr>
+    <th>説明文</th>
+    <td><%= @room.note %></td>
+  </tr>
+  <tr>
+    <th>写真1</th>
+    <td><%= image_tag @room.photo1.url(:medium) %></td>
+  </tr>
+  <tr>
+    <th>写真2</th>
+    <td><%= image_tag @room.photo2.url(:medium) %></td>
+  </tr>
+</table>
+<a class="btn_round" href="<%= edit_room_path(@room) %>"><span>編集</span></a>
+<a class="btn_round" href="<%= "/rooms/"+@room.house_id.to_s+"/index" %>"><span>部屋一覧</span></a>

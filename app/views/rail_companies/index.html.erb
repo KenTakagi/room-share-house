@@ -1,0 +1,37 @@
+<h1>Listing rail_companies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rr</th>
+      <th>Name</th>
+      <th>Url</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Sort</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rail_companies.each do |rail_company| %>
+      <tr>
+        <td><%= rail_company.rr_id %></td>
+        <td><%= rail_company.name %></td>
+        <td><%= rail_company.url %></td>
+        <td><%= rail_company.company_type %></td>
+        <td><%= rail_company.status %></td>
+        <td><%= rail_company.sort %></td>
+        <td><%= link_to 'Show', rail_company %></td>
+        <td><%= link_to 'Edit', edit_rail_company_path(rail_company) %></td>
+        <td><%= link_to 'Destroy', rail_company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rail company', new_rail_company_path %>

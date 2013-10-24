@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  kind: 1
+  subject: MyString
+  body: MyText
+  prefecture: MyString
+  city: MyString
+  town: MyString
+  sex: 1
+  deleted_at: 2013-10-23 13:18:12
+
+two:
+  user_id: 1
+  kind: 1
+  subject: MyString
+  body: MyText
+  prefecture: MyString
+  city: MyString
+  town: MyString
+  sex: 1
+  deleted_at: 2013-10-23 13:18:12

@@ -1,0 +1,47 @@
+<h1>Listing rooms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>House</th>
+      <th>Name</th>
+      <th>Largeness</th>
+      <th>Kind</th>
+      <th>Facilities</th>
+      <th>Sex</th>
+      <th>Rent</th>
+      <th>Expense</th>
+      <th>Note</th>
+      <th>Enable</th>
+      <th>Nationality</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.house_id %></td>
+        <td><%= room.name %></td>
+        <td><%= room.largeness %></td>
+        <td><%= room.kind %></td>
+        <td><%= room.facilities %></td>
+        <td><%= room.sex %></td>
+        <td><%= room.rent %></td>
+        <td><%= room.expense %></td>
+        <td><%= room.note %></td>
+        <td><%= room.enable %></td>
+        <td><%= room.nationality %></td>
+        <td><%= link_to 'Show', room %></td>
+        <td><%= link_to 'Edit', edit_room_path(room) %></td>
+        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Room', new_room_path %>

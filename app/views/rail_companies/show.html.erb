@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rr:</strong>
+  <%= @rail_company.rr_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rail_company.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @rail_company.url %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @rail_company.type %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @rail_company.status %>
+</p>
+
+<p>
+  <strong>Sort:</strong>
+  <%= @rail_company.sort %>
+</p>
+
+<%= link_to 'Edit', edit_rail_company_path(@rail_company) %> |
+<%= link_to 'Back', rail_companies_path %>
